@@ -17,3 +17,27 @@
 # [["f", "bar"]]                    #  "-f bar"
 # [["foo", "bar"], "baz"]           #  "--foo bar baz"
 # [["foo"], ["bar", "baz"], "qux"]  #  "foo --bar baz qux"
+
+def args_to_string args
+  args.map { |a|
+    if a.kind_of?(Array)
+      if a.size == 1
+        a[0]
+      else
+        a[0] = (a[0].size == 1 ? "-" : "--") + a[0]
+        a.join(" ")
+      end
+    else
+      a
+    end
+  }.join(" ")
+end
+
+
+def args_to_string args
+  args.map do |key, value|
+      value ? "#{key.length > 1 ? "--" : "-"}#{key} #{value}" : key
+  end.join " "
+end
+
+
