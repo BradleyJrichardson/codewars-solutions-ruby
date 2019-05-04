@@ -14,3 +14,19 @@
 # All numbers, except the first one, must be lower than 10: if there are, you have to set them to 0 and increment the next number in sequence.
 
 # You can assume all tests inputs to be valid.
+
+def nextVersion(version)
+  a = version.split('.')
+  i = a.size - 1
+  while i > 0 && a[i] == '9'
+    a[i] = '0'
+    i -= 1
+  end
+  a[i] = (a[i].to_i + 1).to_s
+  a.join('.')
+end
+
+
+def nextVersion(version)
+  version.succ
+end
